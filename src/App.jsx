@@ -83,7 +83,7 @@ function App() {
     placeholder="Enter GitHub username"
     value={username}
     onChange={(e) => setUsername(e.target.value)}
-    className="p-3 border border-gray-700 rounded-md bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 tracking-wider focus:ring-teal-500 h-12 flex-grow-[3]"
+    className="p-3 border border-gray-700 rounded-md bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 tracking-wider focus:ring-teal-500 h-12 mb-5 flex-grow-[3]"
   />
   <button
     onClick={fetchUserData}
