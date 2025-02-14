@@ -27,18 +27,18 @@ function App() {
       setError("Please enter a GitHub username");
       return;
     }
-  
+
     setLoading(true);
     setError("");
-  
+
     // Remove spaces in the username
     const formattedUsername = username.replace(/\s+/g, "");
-  
+
     const headers = {
       Authorization: `token ${GITHUB_TOKEN}`,
       Accept: "application/vnd.github.v3+json",
     };
-  
+
     try {
       const userResponse = await fetch(
         `https://api.github.com/users/${formattedUsername}`,
@@ -47,18 +47,18 @@ function App() {
       if (!userResponse.ok) throw new Error("Invalid username");
       const userData = await userResponse.json();
       setUserData(userData);
-  
+
       const reposResponse = await fetch(
         `https://api.github.com/users/${formattedUsername}/repos?per_page=100`,
         { headers }
       );
       if (!reposResponse.ok) throw new Error("Repositories not found");
       const reposData = await reposResponse.json();
-  
+
       const sortedRepos = reposData
         .sort((a, b) => b.stargazers_count - a.stargazers_count)
         .slice(0, 5);
-  
+
       setRepos(sortedRepos);
     } catch (err) {
       setError(err.message);
@@ -68,30 +68,30 @@ function App() {
       setLoading(false);
     }
   };
-  
+
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 p-6 text-gray-300">
-      <h1 className="text-4xl md:text-5xl font-bold lg:mt-10 leading-12 sm:leading-normal
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 p-6 text-gray-300 mb-14">
+      <h1 className="text-4xl md:text-5xl font-bold mt-14 md:mt-3 leading-12 sm:leading-normal
  tracking-wider mb-10 text-teal-400 text-center">
         DevHub : Discover GitHub Wizards
       </h1>
 
       <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full max-w-lg justify-center">
-  <input
-    type="text"
-    placeholder="Enter GitHub username"
-    value={username}
-    onChange={(e) => setUsername(e.target.value)}
-    className="p-3 border border-gray-700 rounded-md bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 tracking-wider focus:ring-teal-500 h-12 mb-5 flex-grow-[3]"
-  />
-  <button
-    onClick={fetchUserData}
-    className="h-12 px-6 bg-teal-600 text-white rounded-md hover:bg-teal-500 transition mb-7 duration-300 flex items-center justify-center flex-grow"
-  >
-    Search
-  </button>
-</div>
+        <input
+          type="text"
+          placeholder="Enter GitHub username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="p-3 border border-gray-700 rounded-md bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 tracking-wider focus:ring-teal-500 h-12 mb-5 flex-grow-[3]"
+        />
+        <button
+          onClick={fetchUserData}
+          className="h-12 px-6 bg-teal-600 text-white rounded-md hover:bg-teal-500 transition mb-7 duration-300 flex items-center justify-center flex-grow"
+        >
+          Search
+        </button>
+      </div>
 
 
 
