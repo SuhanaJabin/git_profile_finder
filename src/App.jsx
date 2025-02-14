@@ -71,9 +71,9 @@ function App() {
 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 p-6 text-gray-300  ">
-      <div className="border-3 border-teal-700 p-3 sm:p-5">
-      <div className=" flex flex-col items-center justify-center border-1 border-teal-700 p-18 sm:p-9">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 text-gray-300  ">
+      <div className="border-3 border-teal-700 m-3 sm:m-5">
+      <div className=" flex flex-col items-center justify-center border-1 border-teal-700 m-18 sm:m-9">
       <h1 className="text-3xl md:text-5xl font-bold mt-14 md:mt-10 leading-12 sm:leading-normal
  tracking-wider mb-10 text-teal-400 text-center">
         DevHub : Discover GitHub Wizards
