@@ -72,7 +72,7 @@ function App() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 p-6 text-gray-300">
-      <h1 className="text-4xl md:text-5xl font-bold mt-10 tracking-wider mb-10 text-teal-400 text-center">
+      <h1 className="text-4xl md:text-5xl font-bold lg:mt-10 tracking-wider mb-10 text-teal-400 text-center">
         DevHub : Discover GitHub Wizards
       </h1>
 
