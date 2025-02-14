@@ -71,30 +71,28 @@ function App() {
 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 text-gray-300  ">
-      <div className="border-3 border-teal-700 m-3 sm:m-5">
-      <div className=" flex flex-col items-center justify-center border-1 border-teal-700 m-18 sm:m-9">
-      <h1 className="text-3xl md:text-5xl font-bold mt-14 md:mt-10 leading-12 sm:leading-normal
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-950 p-6 text-gray-300  ">
+     
+      <h1 className="text-4xl md:text-5xl font-bold mt-14 md:mt-10 leading-12 sm:leading-normal
  tracking-wider mb-10 text-teal-400 text-center">
         DevHub : Discover GitHub Wizards
       </h1>
 
-      <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full max-w-lg items-center justify-center">
-  <input
-    type="text"
-    placeholder="Enter GitHub username"
-    value={username}
-    onChange={(e) => setUsername(e.target.value)}
-    className="p-3 border border-gray-700 rounded-md bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 tracking-wider focus:ring-teal-500 h-12 mb-7 w-full sm:w-auto"
-  />
-  <button
-    onClick={fetchUserData}
-    className="h-12 px-6 bg-teal-600 text-white rounded-md hover:bg-teal-500 transition mb-7 duration-500 flex items-center justify-center w-full sm:w-auto"
-  >
-    Search
-  </button>
-</div>
-
+      <div className="flex flex-col sm:flex-row gap-3 mt-6 w-full max-w-lg justify-center">
+        <input
+          type="text"
+          placeholder="Enter GitHub username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="p-3 border border-gray-700 rounded-md bg-gray-900 text-gray-200 focus:outline-none focus:ring-2 tracking-wider focus:ring-teal-500 h-12 mb-5 flex-grow-[3]"
+        />
+        <button
+          onClick={fetchUserData}
+          className="h-12 px-6 bg-teal-600 text-white rounded-md hover:bg-teal-500 transition mb-7 duration-500 flex items-center justify-center flex-grow"
+        >
+          Search
+        </button>
+      </div>
 
 
 
@@ -119,7 +117,7 @@ function App() {
       )}
 
       {repos.length > 0 ? (
-        <div className="w-full max-w-lg sm:max-w-lg mt-6">
+        <div className="w-full max-w-md sm:max-w-lg mt-6">
           <h3 className="text-lg font-semibold tracking-wider mb-4 text-teal-400">
             Top 5 Repositories
           </h3>
@@ -148,8 +146,7 @@ function App() {
       ) : (
         userData && <p className="text-gray-400 mt-4">No repositories</p>
       )}
-      </div>
-      </div>
+    
     </div>
   );
 }
