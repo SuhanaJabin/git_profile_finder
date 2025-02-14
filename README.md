@@ -21,7 +21,7 @@ A simple React application that allows users to search for a GitHub username and
 
 ## Live Demo
 
-Check out the live demo of the project: [[GitHub User Finder Live Demo](https://git-profile-finder-one.vercel.app/)](#) *(Replace with your deployment link)*
+Live demo of the project: [[GitHub User Finder Hosted Link](https://git-profile-finder-one.vercel.app/)](#) *(Replace with your deployment link)*
 
 ---
 
