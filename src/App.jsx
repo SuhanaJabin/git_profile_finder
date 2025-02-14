@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import { Commet } from "react-loading-indicators";
+
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
 function App() {
   const [username, setUsername] = useState("");
@@ -14,18 +17,23 @@ function App() {
     setLoading(true);
     setError("");
 
+    const headers = {
+      Authorization: `token ${GITHUB_TOKEN}`,
+      Accept: "application/vnd.github.v3+json",
+    };
+
     try {
-      // Fetch user details
       const userResponse = await fetch(
-        `https://api.github.com/users/${username}`
+        `https://api.github.com/users/${username}`,
+        { headers }
       );
       if (!userResponse.ok) throw new Error("User not found");
       const userData = await userResponse.json();
       setUserData(userData);
 
-      // Fetch top 5 repositories
       const reposResponse = await fetch(
-        `https://api.github.com/users/${username}/repos?sort=stars&per_page=5`
+        `https://api.github.com/users/${username}/repos?sort=stars&per_page=5`,
+        { headers }
       );
       if (!reposResponse.ok) throw new Error("Repositories not found");
       const reposData = await reposResponse.json();
@@ -58,7 +66,7 @@ function App() {
         <button onClick={fetchUserData}>Search</button>
       </div>
 
-      {loading && <p>Loading...</p>}
+      {loading && <Commet color="#32cd32" size="small" text="" textColor="" />}
       {error && <p className="error">{error}</p>}
 
       {userData && (
@@ -74,11 +82,7 @@ function App() {
             <h3>Top 5 Repositories</h3>
             {repos.map((repo) => (
               <div key={repo.id} className="repo">
-                <a
-                  href={repo.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
                   {repo.name}
                 </a>
                 <p>Stars: {repo.stargazers_count}</p>
