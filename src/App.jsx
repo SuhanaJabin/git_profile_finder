@@ -82,7 +82,7 @@ function App() {
         />
         <button
           onClick={fetchUserData}
-          className="px-6 py-3 bg-teal-600 text-white rounded-md hover:bg-teal-500 transition duration-300"
+          className="px-6 py-3 bg-teal-600 text-white rounded-md hover:bg-teal-500 transition mb-7 duration-300"
         >
           Search
         </button>
