@@ -44,7 +44,7 @@ function App() {
         `https://api.github.com/users/${formattedUsername}`,
         { headers }
       );
-      if (!userResponse.ok) throw new Error("User not found");
+      if (!userResponse.ok) throw new Error("Invalid username");
       const userData = await userResponse.json();
       setUserData(userData);
   
