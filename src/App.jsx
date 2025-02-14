@@ -23,6 +23,7 @@ function App() {
     };
 
     try {
+      // Fetch user data
       const userResponse = await fetch(
         `https://api.github.com/users/${username}`,
         { headers }
@@ -31,13 +32,20 @@ function App() {
       const userData = await userResponse.json();
       setUserData(userData);
 
+      // Fetch repositories
       const reposResponse = await fetch(
-        `https://api.github.com/users/${username}/repos?sort=stars&per_page=5`,
+        `https://api.github.com/users/${username}/repos?per_page=100`,
         { headers }
       );
       if (!reposResponse.ok) throw new Error("Repositories not found");
       const reposData = await reposResponse.json();
-      setRepos(reposData);
+
+      // Sort repositories by stars (descending) and take the top 5
+      const sortedRepos = reposData
+        .sort((a, b) => b.stargazers_count - a.stargazers_count)
+        .slice(0, 5);
+
+      setRepos(sortedRepos);
     } catch (err) {
       setError(err.message);
       setUserData(null);
@@ -85,7 +93,7 @@ function App() {
                 <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
                   {repo.name}
                 </a>
-                <p>Stars: {repo.stargazers_count}</p>
+                <p>⭐ Stars: {repo.stargazers_count}</p>
                 <p>{repo.description}</p>
               </div>
             ))}
